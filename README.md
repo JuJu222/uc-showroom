@@ -27,3 +27,10 @@ Untuk memulai web app, jalankan:
 ```bash
 npm run dev
 ```
+
+## Testing
+Untuk melakukan unit test yang akan memeriksa sistem login dan ketersediaan semua route, jalankan:
+```bash
+php artisan test
+```
+Catatan: record database akan terhapus bila unit test dijalankan.
