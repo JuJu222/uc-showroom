@@ -22,13 +22,13 @@ export default function Authenticated({ user, header, children }) {
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink href={route('orders.index')} active={route().current('orders.index')}>
-                                    Orders
+                                    Daftar Order
                                 </NavLink>
                                 <NavLink href={route('vehicles.index')} active={route().current('vehicles.index')}>
-                                    Vehicles
+                                    Daftar Kendaraan
                                 </NavLink>
                                 <NavLink href={route('customers.index')} active={route().current('customers.index')}>
-                                    Customers
+                                    Daftar Customer
                                 </NavLink>
                             </div>
                         </div>
