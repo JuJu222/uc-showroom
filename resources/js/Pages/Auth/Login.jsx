@@ -30,6 +30,13 @@ export default function Login({ status, canResetPassword }) {
         <GuestLayout>
             <Head title="Log in" />
 
+            <div className="mb-4 font-medium text-sm text-indigo-600">
+                <p>(Jalankan "php artisan db:seed" untuk membuat akun admin di database setelah menjalankan migration)</p>
+                <p className='py-1'>Kredensial Akun Admin untuk Demo:</p>
+                <p><b>Email: </b>admin@ucshowroom.com</p>
+                <p><b>Password: </b>12345678</p>
+            </div>
+
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
             <form onSubmit={submit}>
