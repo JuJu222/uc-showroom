@@ -27,12 +27,12 @@ Lakukan migration database dengan menjalankan:
 php artisan migrate
 ```
 
-Lalu seed database untuk membuat akun admin dengan:
+Lalu seed database untuk mengisi database dengan data membuat akun admin dengan:
 ```bash
 php artisan db:seed
 ```
 
-Akun admin yang dapat digunakan untuk login adalah:
+Data database serta akun admin juga tersedia di file <b>uc_showroom.sql</b> dalam project ini. Akun admin yang dapat digunakan untuk login adalah:
 
 
 <b>Email</b>: admin@ucshowroom.com
