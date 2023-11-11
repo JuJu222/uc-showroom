@@ -22,7 +22,7 @@ function Index({ auth, orders }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Orders</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Daftar Order</h2>}
         >
             <Head title="Dashboard" />
 
