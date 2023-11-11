@@ -27,7 +27,7 @@ class Order extends Model
     }
 
     /**
-     * Order belongs to one customer
+     * Order belongs to a customer
      */
     public function customer()
     {

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
 import {Head, router} from '@inertiajs/react';
 
-// get auth and orders from controller
+// get auth, order, vehicles, and customers from controller
 function Edit({ auth, order, vehicles, customers }) {
     const [customerId, setCustomerId] = useState(order.customer.id)
     // initialize ordered vehicles
@@ -42,6 +42,7 @@ function Edit({ auth, order, vehicles, customers }) {
         setSelectedVehicles(selectedVehiclesCopy)
     }
 
+    // handle on vehicle type change
     function handleModifyVehicleType(e, index) {
         // make a separate copy of the array
         let selectedVehiclesCopy = [...selectedVehicles]
@@ -56,6 +57,7 @@ function Edit({ auth, order, vehicles, customers }) {
         setSelectedVehicles(selectedVehiclesCopy);
     }
 
+    // handle on vehicle amount change
     function handleModifyVehicleAmount(e, index) {
         // make a separate copy of the array
         let selectedVehiclesCopy = [...selectedVehicles]

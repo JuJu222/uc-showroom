@@ -9,7 +9,7 @@ use Inertia\Inertia;
 
 class CustomerController extends Controller
 {
-    // get all customers and render page at "customers/" route
+    // get all customers and render page at "/customers" route
     public function index() {
         // get all customers from the database
         $customers = Customer::all();
@@ -18,7 +18,7 @@ class CustomerController extends Controller
         return Inertia::render('Customer/Index', compact('customers'));
     }
 
-    // render create page at "customers/create" route
+    // render create page at "/customers/create" route
     public function create() {
         // render create page
         return Inertia::render('Customer/Create');
@@ -26,6 +26,7 @@ class CustomerController extends Controller
 
     // receive post request from create route
     public function store(Request $request) {
+        // save ID card image
         $imageName = time().'.'.$request->file('idCard')->extension();
         $request->file('idCard')->move(public_path('img/id_card'), $imageName);
 
@@ -83,6 +84,7 @@ class CustomerController extends Controller
     public function delete($id) {
         $customer = Customer::query()->find($id);
 
+        // delete ID card image
         File::delete('img/id_card/'.$customer->id_card_path);
         $customer->delete();
 

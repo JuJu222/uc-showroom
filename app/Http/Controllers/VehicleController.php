@@ -11,7 +11,7 @@ use Inertia\Inertia;
 
 class VehicleController extends Controller
 {
-    // get all vehicles and render page at "vehicles/" route
+    // get all vehicles and render page at "/vehicles" route
     public function index() {
         // get all vehicles from the database with its child table
         $vehicles = Vehicle::query()->with('vehicleable')->get();
@@ -20,7 +20,7 @@ class VehicleController extends Controller
         return Inertia::render('Vehicle/Index', compact('vehicles'));
     }
 
-    // render create page at "vehicles/create" route
+    // render create page at "/vehicles/create" route
     public function create() {
         // render create page
         return Inertia::render('Vehicle/Create');

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
 import {Head, router} from '@inertiajs/react';
 
-// get auth and vehicles from controller
+// get auth from controller
 function Create({ auth }) {
     const [model, setModel] = useState('')
     const [year, setYear] = useState('')

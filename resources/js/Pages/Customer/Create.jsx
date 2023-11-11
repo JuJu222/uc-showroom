@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
 import {Head, router} from '@inertiajs/react';
 
-// get auth and customers from controller
+// get auth from controller
 function Create({ auth }) {
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')

@@ -51,6 +51,7 @@ function Create({ auth, vehicles, customers }) {
             setSelectedVehicles(selectedVehiclesCopy)
         }
 
+        // handle on vehicle type change
         function handleModifyVehicleType(e, index) {
             // make a separate copy of the array
             let selectedVehiclesCopy = [...selectedVehicles]
@@ -65,6 +66,7 @@ function Create({ auth, vehicles, customers }) {
             setSelectedVehicles(selectedVehiclesCopy);
         }
 
+        // handle on vehicle amount change
         function handleModifyVehicleAmount(e, index) {
             // make a separate copy of the array
             let selectedVehiclesCopy = [...selectedVehicles]

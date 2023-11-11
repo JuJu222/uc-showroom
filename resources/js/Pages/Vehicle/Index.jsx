@@ -98,7 +98,7 @@ function Index({ auth, vehicles }) {
                                             </a>
                                         </td>
                                     </tr>
-                                    {/* conditional rendering for row */}
+                                    {/* conditional rendering for subtype row */}
                                     {vehicle.vehicleable_type == 'App\\Models\\Car' ? (
                                         <>
                                             <tr>

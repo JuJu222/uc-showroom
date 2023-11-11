@@ -14,7 +14,7 @@ use Inertia\Inertia;
 
 class OrderController extends Controller
 {
-    // get all orders and render page at "orders/" route
+    // get all orders and render page at "/orders" route
     public function index() {
         // get all orders from the database with its details and customer
         $orders = Order::query()->with('orderDetails.vehicle.vehicleable', 'customer')->get();
@@ -23,7 +23,7 @@ class OrderController extends Controller
         return Inertia::render('Order/Index', compact('orders'));
     }
 
-    // render create page at "orders/create" route
+    // render create page at "/orders/create" route
     public function create() {
         // get vehicles and customers data
         $vehicles = Vehicle::all();

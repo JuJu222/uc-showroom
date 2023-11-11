@@ -21,7 +21,7 @@ class OrderDetail extends Model
     ];
 
     /**
-     * Order detail belongs to one order
+     * Order detail belongs to an order
      */
     public function order()
     {
@@ -29,7 +29,7 @@ class OrderDetail extends Model
     }
 
     /**
-     * Order detail belongs to one vehicle
+     * Order detail belongs to a vehicle
      */
     public function vehicle()
     {
