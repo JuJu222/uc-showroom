@@ -35,16 +35,42 @@ class OrderController extends Controller
 
     // receive post request from create route
     public function store(Request $request) {
-        $order = Order::query()->create([
-            'customer_id' => $request->input('customer_id')
-        ]);
+        // check if request has customer data
+        if ($request->has('name')) {
+            // save ID card image
+            $imageName = time().'.'.$request->file('idCard')->extension();
+            $request->file('idCard')->move(public_path('img/id_card'), $imageName);
 
-        foreach ($request->input('vehicles') as $index=>$vehicle) {
-            OrderDetail::query()->create([
-                'order_id' => $order->id,
-                'vehicle_id' => $vehicle['vehicle']['id'],
-                'amount' => $vehicle['amount']
+           $customer =  Customer::query()->create([
+                'name' => $request->input('name'),
+                'address' => $request->input('address'),
+                'phone' => $request->input('phone'),
+                'id_card_path' => $imageName,
             ]);
+
+           $order = Order::query()->create([
+               'customer_id' => $customer->id
+           ]);
+
+           foreach ($request->input('vehicles') as $vehicle) {
+               OrderDetail::query()->create([
+                   'order_id' => $order->id,
+                   'vehicle_id' => $vehicle['vehicle']['id'],
+                   'amount' => $vehicle['amount']
+               ]);
+           }
+        } else {
+            $order = Order::query()->create([
+                'customer_id' => $request->input('customer_id')
+            ]);
+
+            foreach ($request->input('vehicles') as $vehicle) {
+                OrderDetail::query()->create([
+                    'order_id' => $order->id,
+                    'vehicle_id' => $vehicle['vehicle']['id'],
+                    'amount' => $vehicle['amount']
+                ]);
+            }
         }
 
         // return to orders index route
@@ -71,7 +97,7 @@ class OrderController extends Controller
 
         // delete and create new order details
         $order->orderDetails()->delete();
-        foreach ($request->input('vehicles') as $index=>$vehicle) {
+        foreach ($request->input('vehicles') as $vehicle) {
             OrderDetail::query()->create([
                 'order_id' => $order->id,
                 'vehicle_id' => $vehicle['vehicle']['id'],

@@ -28,6 +28,11 @@ function Create({ auth, vehicles, customers }) {
             index: 0,
             amount: 1,
         }])
+        const [isCreateNewCustomer, setIsCreateNewCustomer] = useState(true)
+        const [name, setName] = useState('')
+        const [address, setAddress] = useState('')
+        const [phone, setPhone] = useState('')
+        const [idCard, setIdCard] = useState({})
 
         // add more vehicles to the array
         function handleAddVehicle() {
@@ -83,10 +88,21 @@ function Create({ auth, vehicles, customers }) {
         // handle on form submit, send data to controller
         function handleSubmit(e) {
             e.preventDefault()
-            router.post(route('orders.store'), {
-                customer_id: customerId,
-                vehicles: selectedVehicles
-            })
+            if (isCreateNewCustomer) {
+                router.post(route('orders.store'), {
+                    customer_id: customerId,
+                    vehicles: selectedVehicles,
+                    name: name,
+                    address: address,
+                    phone: phone,
+                    idCard: idCard,
+                })
+            } else {
+                router.post(route('orders.store'), {
+                    customer_id: customerId,
+                    vehicles: selectedVehicles
+                })
+            }
         }
 
         return (
@@ -100,17 +116,71 @@ function Create({ auth, vehicles, customers }) {
                     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                             <form onSubmit={handleSubmit}>
-                                <div className="mb-6">
-                                    <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900">Pilih Customer *</label>
-                                    <select name="type" required
-                                            value={customerId}
-                                            onChange={(e) => setCustomerId(e.target.value)}
-                                            className='border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400'>
-                                        {customers.map((customer) => (
-                                            <option value={customer.id}>{customer.name} - {customer.address} - {customer.phone}</option>
-                                        ))}
-                                    </select>
+                                <div className="grid gap-x-6 md:grid-cols-2">
+                                    <button type="button" onClick={() => setIsCreateNewCustomer(true)}
+                                            className={isCreateNewCustomer ?
+                                                'text-white w-full transition border bg-indigo-500 mb-6 hover:bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-pink font-bold rounded-lg text-sm px-5 py-3 text-center'
+                                                :
+                                                'text-indigo-500 w-full transition border border-indigo-500 mb-6 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-pink font-bold rounded-lg text-sm px-5 py-3 text-center'
+                                            }>
+                                        Tambah Customer Baru
+                                    </button>
+                                    <button type="button" onClick={() => setIsCreateNewCustomer(false)}
+                                            className={!isCreateNewCustomer ?
+                                                'text-white w-full transition border bg-indigo-500 mb-6 hover:bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-pink font-bold rounded-lg text-sm px-5 py-3 text-center'
+                                                :
+                                                'text-indigo-500 w-full transition border border-indigo-500 mb-6 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-pink font-bold rounded-lg text-sm px-5 py-3 text-center'
+                                            }>
+                                        Pilih Customer Terdaftar
+                                    </button>
                                 </div>
+                                {isCreateNewCustomer ? (
+                                    <>
+                                        <div className="mb-6">
+                                            <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900">Nama Customer *</label>
+                                            <input type="text" name="name"
+                                                   value={name}
+                                                   onChange={(e) => setName(e.target.value)}
+                                                   className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"
+                                                   placeholder="John Doe" required />
+                                        </div>
+                                        <div className="mb-6">
+                                            <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-900">Alamat *</label>
+                                            <input type="text" name="address"
+                                                   value={address}
+                                                   onChange={(e) => setAddress(e.target.value)}
+                                                   className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"
+                                                   placeholder="Jl. Basuki Rahmat 200" required />
+                                        </div>
+                                        <div className="mb-6">
+                                            <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900">Nomor Telepon *</label>
+                                            <input type="text" name="phone"
+                                                   value={phone}
+                                                   onChange={(e) => setPhone(e.target.value)}
+                                                   className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"
+                                                   placeholder="082138172391" required />
+                                        </div>
+                                        <div className="mb-6">
+                                            <label htmlFor="id_card" className="block mb-2 text-sm font-medium text-gray-900">Foto ID Card (PNG/JPEG) *</label>
+                                            <input type="file" name="id_card" accept="image/png, image/jpeg"
+                                                   onChange={(e) => setIdCard(e.target.files[0])}
+                                                   className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"
+                                                   placeholder="082138172391" required />
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="mb-6">
+                                        <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900">Pilih Customer *</label>
+                                        <select name="type" required
+                                                value={customerId}
+                                                onChange={(e) => setCustomerId(e.target.value)}
+                                                className='border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400'>
+                                            {customers.map((customer) => (
+                                                <option value={customer.id}>{customer.name} - {customer.address} - {customer.phone}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                )}
                                 <div className="grid gap-x-6 md:grid-cols-2">
                                     {selectedVehicles.map((selectedVehicle, index) => (
                                         <React.Fragment key={index}>
