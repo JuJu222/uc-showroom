@@ -11,6 +11,15 @@ Database: MySQL
 
 ## Setup
 
+Unduh dan install dependencies dengan menjalankan:
+
+```bash
+composer install
+npm install
+```
+
+Buatah file <b>.env</b> dan copy isi file <b>.env.example</b> ke dalam file .env, sesuaikan juga dengan pengaturan MySQL di komputer anda.
+
 Website menggunakan login untuk mencegah akses dari pihak yang tidak berwenang. 
 Lakukan migration database dengan menjalankan:
 
