@@ -129,7 +129,7 @@ function Edit({ auth, order, vehicles, customers }) {
                                         <div className="mb-4">
                                             <label htmlFor="amount" className="block mb-2 text-sm font-medium text-gray-900">Jumlah Kendaraan *</label>
                                             <div className='flex gap-4'>
-                                                <input type="number" name="amount"
+                                                <input type="number" name="amount" min="1"
                                                        value={selectedVehicle.amount}
                                                        onChange={(e) => handleModifyVehicleAmount(e, index)}
                                                        className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"

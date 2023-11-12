@@ -107,7 +107,7 @@ function Edit({ auth, vehicle }) {
                            </div>
                            <div className="mb-6">
                                <label htmlFor="year" className="block mb-2 text-sm font-medium text-gray-900">Tahun Keluaran *</label>
-                               <input type="number" name="year"
+                               <input type="number" name="year" min="1"
                                       value={year}
                                       onChange={(e) => setYear(e.target.value)}
                                       className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"
@@ -115,7 +115,7 @@ function Edit({ auth, vehicle }) {
                            </div>
                            <div className="mb-6">
                                <label htmlFor="capacity" className="block mb-2 text-sm font-medium text-gray-900">Kapasistas Penumpang *</label>
-                               <input type="number" name="capacity"
+                               <input type="number" name="capacity" min="1"
                                       value={capacity}
                                       onChange={(e) => setCapacity(e.target.value)}
                                       className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"
@@ -131,7 +131,7 @@ function Edit({ auth, vehicle }) {
                            </div>
                            <div className="mb-6">
                                <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-900">Harga (Rp) *</label>
-                               <input type="number" name="price"
+                               <input type="number" name="price" min="1"
                                       value={price}
                                       onChange={(e) => setPrice(e.target.value)}
                                       className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"
@@ -172,7 +172,7 @@ function Edit({ auth, vehicle }) {
                                    </div>
                                    <div className="mb-6">
                                        <label htmlFor="trunk_space" className="block mb-2 text-sm font-medium text-gray-900">Luas Bagasi (L) *</label>
-                                       <input type="number" name="trunk_space"
+                                       <input type="number" name="trunk_space" min="1"
                                               value={trunkSpace}
                                               onChange={(e) => setTrunkSpace(e.target.value)}
                                               className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"
@@ -184,7 +184,7 @@ function Edit({ auth, vehicle }) {
                                    <>
                                        <div className="mb-6">
                                            <label htmlFor="trunk_space" className="block mb-2 text-sm font-medium text-gray-900">Ukuran Bagasi (L) *</label>
-                                           <input type="number" name="trunk_space"
+                                           <input type="number" name="trunk_space" min="1"
                                                   value={trunkSpace}
                                                   onChange={(e) => setTrunkSpace(e.target.value)}
                                                   className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"
@@ -192,7 +192,7 @@ function Edit({ auth, vehicle }) {
                                        </div>
                                        <div className="mb-6">
                                            <label htmlFor="fuel_capacity" className="block mb-2 text-sm font-medium text-gray-900">Kapasitas Bensin (L) *</label>
-                                           <input type="number" name="fuel_capacity"
+                                           <input type="number" name="fuel_capacity" min="1"
                                                   value={fuelCapacity}
                                                   onChange={(e) => setFuelCapacity(e.target.value)}
                                                   className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"
@@ -203,7 +203,7 @@ function Edit({ auth, vehicle }) {
                                    <>
                                        <div className="mb-6">
                                            <label htmlFor="fuel_capacity" className="block mb-2 text-sm font-medium text-gray-900">Jumlah Roda *</label>
-                                           <input type="number" name="fuel_capacity"
+                                           <input type="number" name="fuel_capacity" min="1"
                                                   value={wheels}
                                                   onChange={(e) => setWheels(e.target.value)}
                                                   className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"
@@ -211,7 +211,7 @@ function Edit({ auth, vehicle }) {
                                        </div>
                                        <div className="mb-6">
                                            <label htmlFor="cargo_space" className="block mb-2 text-sm font-medium text-gray-900">Luas Area Kargo (L) *</label>
-                                           <input type="number" name="cargo_space"
+                                           <input type="number" name="cargo_space" min="1"
                                                   value={cargoSpace}
                                                   onChange={(e) => setCargoSpace(e.target.value)}
                                                   className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"

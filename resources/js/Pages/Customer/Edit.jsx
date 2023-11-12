@@ -52,7 +52,7 @@ function Edit({ auth, customer }) {
                                <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900">Nomor Telepon *</label>
                                <input type="text" name="phone"
                                       value={phone}
-                                      onChange={(e) => setPhone(e.target.value)}
+                                      onChange={(e) => setPhone(e.target.value.replace(/\D/,''))}
                                       className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-400 focus:border-indigo-400 block w-full p-2.5 placeholder-gray-400"
                                       placeholder="082138172391" required />
                            </div>
